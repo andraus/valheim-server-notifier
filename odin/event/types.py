@@ -6,9 +6,10 @@ class Death(Event):
 
     def __init__(self, viking: str) -> None:
         self.viking = viking
+        self.isDante = viking == 'Dantez'
 
     def __str__(self) -> str:
-        return f'**Viking {self.viking} has gone to Valhala!**'
+        return f'**Death beckons, Queer Tarnished {self.viking}. Be gone. Hapless scum.**' if self.isDante else f'**Death beckons, {self.viking}. Still, I have high hopes for thee.**'
 
 
 class Join(Event):
@@ -16,9 +17,10 @@ class Join(Event):
 
     def __init__(self, viking: str) -> None:
         self.viking = viking
+        self.isDante = viking == 'Dantez'
 
     def __str__(self) -> str:
-        return f'*Viking {self.viking} has joined the battle!*'
+        return f'**Trifle not with me, Queer Tarnished {self.viking}.**' if self.isDante else  f'**A pleasure to meet thee, Tarnished {self.viking}.**'
 
 
 class ServerOn(Event):
