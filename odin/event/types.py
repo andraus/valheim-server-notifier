@@ -17,7 +17,7 @@ class Join(Event):
 
     def __init__(self, viking: str) -> None:
         self.viking = viking
-        self.isDante = viking == 'Dantez'
+        self.isDante = viking == 'Kiazyd'
 
     def __str__(self) -> str:
         return f'**Trifle not with me, Queer Tarnished {self.viking}.**' if self.isDante else  f'**A pleasure to meet thee, Tarnished {self.viking}.**'
