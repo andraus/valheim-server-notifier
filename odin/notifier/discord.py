@@ -13,6 +13,6 @@ def publish_event(webhook_url: str, event: Template):
 def publish_bot_init(webhook_url: str, botVersion: str):
     post(
         webhook_url,
-        json={'content': f'I am the witch Renna [{botVersion}].'},
+        json={'content': f'I am the witch Renna `[{botVersion}]`.'},
         headers={'Content-Type': 'application/json'}
     )
