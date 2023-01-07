@@ -27,7 +27,7 @@ LOG_EVENT_TYPE_REGEXES = {
         'class': types.NewConnection,
     },
     "player_count": {
-        "regex": "Connections (?P<playerCount>[-0-9]*)",
+        "regex": "Connections (?P<playerCount>[-0-9]*) ZDOS",
         'class': types.PlayerCount,
     }
 }
