@@ -5,6 +5,7 @@ from lib.config import VALHEIM_LOG_PATH, DISCORD_WEBHOOK_URL
 from event.matcher import resolve_event
 from notifier.mapper import build_template
 from notifier.discord import publish_event
+from settings import EVENT_BOT_INIT
 
 
 def process_log(log: Optional[str] = None):
@@ -23,6 +24,8 @@ if __name__ == '__main__':
 
     if DISCORD_WEBHOOK_URL is None:
         raise EnvironmentError('Missing <DISCORD_WEBHOOK_URL> envvar')
+
+    publish_event(DISCORD_WEBHOOK_URL, build_template(EVENT_BOT_INIT))
 
     logs = read_logs(path=VALHEIM_LOG_PATH)
     for log in logs:
