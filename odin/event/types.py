@@ -26,7 +26,7 @@ class PlayerCount(Event):
         self.playerCount = playerCount
     
     def __str__(self) -> str:
-        return f'*Tarnished count: {self.playerCount}'
+        return f'*{self.playerCount} Tarnished hunting for glory.*'
 
 class ServerOn(Event):
     def __str__(self) -> str:
