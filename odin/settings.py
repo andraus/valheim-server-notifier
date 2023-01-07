@@ -1,9 +1,5 @@
 from event import types
 
-EVENT_BOT_INIT = {
-    'class': types.BotInit
-}
-
 # Inspired from https://www.reddit.com/r/valheim/comments/n7vv9b/comment/gxihljp
 LOG_EVENT_TYPE_REGEXES = {
     "player_died": {

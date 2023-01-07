@@ -59,11 +59,6 @@ class DeathTemplate(Template):
         # }]
         return payload
 
-class BotInitTemplate(Template):
-    def get_payload(self) -> dict:
-        return super().get_payload()
-
-
 class NewConnectionTemplate(Template):
     def get_payload(self) -> dict:
         return super().get_payload()
@@ -77,7 +72,6 @@ class WorldSaveTemplate(Template):
 
 
 MAP = {
-    types.BotInit: BotInitTemplate,
     types.ServerOn: ServerOnTemplate,
     types.ServerOff: ServerOffTemplate,
     types.Join: JoinTemplate,

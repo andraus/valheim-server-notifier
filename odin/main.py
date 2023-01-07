@@ -1,12 +1,12 @@
+BOT_VERSION = 'RANNI_WITCH_v0.2'
+
 from typing import Optional
 
 from lib.utils import read_logs
 from lib.config import VALHEIM_LOG_PATH, DISCORD_WEBHOOK_URL
 from event.matcher import resolve_event
 from notifier.mapper import build_template
-from notifier.discord import publish_event
-from settings import EVENT_BOT_INIT
-
+from notifier.discord import publish_event, publish_bot_init
 
 def process_log(log: Optional[str] = None):
     if log is None:
@@ -25,7 +25,7 @@ if __name__ == '__main__':
     if DISCORD_WEBHOOK_URL is None:
         raise EnvironmentError('Missing <DISCORD_WEBHOOK_URL> envvar')
 
-    publish_event(DISCORD_WEBHOOK_URL, build_template(EVENT_BOT_INIT))
+    publish_bot_init(DISCORD_WEBHOOK_URL, BOT_VERSION)
 
     logs = read_logs(path=VALHEIM_LOG_PATH)
     for log in logs:

@@ -1,7 +1,5 @@
 from . import Event
 
-BOT_VERSION = 'RANNI_WITCH_v0.2'
-
 class Death(Event):
     viking: str
 
@@ -38,10 +36,6 @@ class ServerOn(Event):
 class ServerOff(Event):
     def __str__(self) -> str:
         return '🛑 Server is OFF 🛑 - *...The battle is over, I see. To every living being, and every living soul. Now cometh the age of the stars.*'
-
-class BotInit(Event):
-    def __str__(self) -> str:
-        return f'I am the witch Renna [{BOT_VERSION}].'
 
 class NewConnection(Event):
     def __str__(self) -> str:
