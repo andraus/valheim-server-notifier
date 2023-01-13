@@ -4,14 +4,14 @@ from . import Template
 class ServerOnTemplate(Template):
     def get_payload(self) -> dict:
         payload = super().get_payload()
-        payload['embeds'] = [{
-            'author': {
-                'name': 'Odin',
-                'icon_url': 'https://static.wikia.nocookie.net/marvel-contestofchampions/images/4/47/Odin_portrait.png/revision/latest?cb=20210307223313',
-            },
-            'title': 'My world is ready for the best warriors',
-            'description': 'Who will join me in our battle?',
-        }]
+        # payload['embeds'] = [{
+        #     # 'author': {
+        #     #     'name': 'Odin',
+        #     #     'icon_url': 'https://static.wikia.nocookie.net/marvel-contestofchampions/images/4/47/Odin_portrait.png/revision/latest?cb=20210307223313',
+        #     # },
+        #     'title': 'Valheim World Created',
+        #     'description': 'This way, Tarnished.',
+        # }]
         return payload
 
 
@@ -19,14 +19,14 @@ class ServerOnTemplate(Template):
 class ServerOffTemplate(Template):
     def get_payload(self) -> dict:
         payload = super().get_payload()
-        payload['embeds'] = [{
-            'author': {
-                'name': 'Odin',
-                'icon_url': 'https://static.wikia.nocookie.net/marvel-contestofchampions/images/4/47/Odin_portrait.png/revision/latest?cb=20210307223313',
-            },
-            'title': 'Very nice crusades today. We\'ll raid another day',
-            'description': 'Have some rest dear warrior. We\'ll meet soon',
-        }]
+        # payload['embeds'] = [{
+        #     # 'author': {
+        #     #     'name': 'Odin',
+        #     #     'icon_url': 'https://static.wikia.nocookie.net/marvel-contestofchampions/images/4/47/Odin_portrait.png/revision/latest?cb=20210307223313',
+        #     # },
+        #     'title': 'Valheim World Ended...',
+        #     'description': '...The battle is over, I see. To every living being, and every living soul.\rNow cometh the age of the stars.',
+        # }]
         return payload
 
 
@@ -34,14 +34,14 @@ class ServerOffTemplate(Template):
 class JoinTemplate(Template):
     def get_payload(self) -> dict:
         payload = super().get_payload()
-        payload['embeds'] = [{
-            'author': {
-                'name': 'Odin',
-                'icon_url': 'https://static.wikia.nocookie.net/marvel-contestofchampions/images/4/47/Odin_portrait.png/revision/latest?cb=20210307223313',
-            },
-            'title': f'Welcome my fellow partner {self.event.viking}, good to see you again',
-            'description': 'Satisfy my wishes and you might reach Valhala',
-        }]
+        # payload['embeds'] = [{
+        #     # 'author': {
+        #     #     'name': 'Odin',
+        #     #     'icon_url': 'https://static.wikia.nocookie.net/marvel-contestofchampions/images/4/47/Odin_portrait.png/revision/latest?cb=20210307223313',
+        #     # },
+        #     'title': f'{self.event.viking}, thou\'rt possessed of the power, no?',
+        #     'description': 'But Tarnished, what business hast thou here?\rI have no memory of inking thee an invitation.',
+        # }]
         return payload
 
 
@@ -49,16 +49,23 @@ class JoinTemplate(Template):
 class DeathTemplate(Template):
     def get_payload(self) -> dict:
         payload = super().get_payload()
-        payload['embeds'] = [{
-            'author': {
-                'name': 'Odin',
-                'icon_url': 'https://static.wikia.nocookie.net/marvel-contestofchampions/images/4/47/Odin_portrait.png/revision/latest?cb=20210307223313',
-            },
-            'title': f'Oh come on {self.event.viking}! You are not ready for Valhala, yet',
-            'description': 'Go back there and fight for our honor!',
-        }]
+        # payload['embeds'] = [{
+        #     # 'author': {
+        #     #     'name': 'Odin',
+        #     #     'icon_url': 'https://static.wikia.nocookie.net/marvel-contestofchampions/images/4/47/Odin_portrait.png/revision/latest?cb=20210307223313',
+        #     # },
+        #     'title': f'Quite the sleuth, aren\'t we, {self.event.viking}? But sadly for thee, destined death is here.',
+        #     'description': 'Enough of thy unbearable breath.',
+        # }]
         return payload
 
+class NewConnectionTemplate(Template):
+    def get_payload(self) -> dict:
+        return super().get_payload()
+
+class PlayerCountTemplate(Template):
+    def get_payload(self) -> dict:
+        return super().get_payload()
 
 class WorldSaveTemplate(Template):
     pass
@@ -70,6 +77,8 @@ MAP = {
     types.Join: JoinTemplate,
     types.Death: DeathTemplate,
     types.WorldSave: WorldSaveTemplate,
+    types.NewConnection: NewConnectionTemplate,
+    types.PlayerCount: PlayerCountTemplate
 }
 
 

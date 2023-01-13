@@ -18,8 +18,16 @@ LOG_EVENT_TYPE_REGEXES = {
         "regex": "OnApplicationQuit",
         'class': types.ServerOff,
     },
-    "world_saved": {
-        "regex": "World saved \( (\d+\.\d+ms) \)",
-        'class': types.WorldSave,
+    # "world_saved": {
+    #     "regex": "World saved \( (\d+\.\d+ms) \)",
+    #     'class': types.WorldSave,
+    # },
+    "new_connection": {
+        "regex": "New connection",
+        'class': types.NewConnection,
+    },
+    "player_count": {
+        "regex": "Connections (?P<playerCount>[-0-9]*) ZDOS",
+        'class': types.PlayerCount,
     }
 }
