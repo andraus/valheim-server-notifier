@@ -50,7 +50,7 @@ class JoinBySteamTemplate(Template):
         payload['embeds'] = [{
             'author': {
                 'name': self.event.steam_user.nick,
-                'icon_url': self.event.steam_user.avatar_url,
+                'icon_url': self.event.steam_user.avatar
             },
             'title': f'I know thee, {self.event.steam_user.real_name}.',
             'description': 'heh',
