@@ -1,4 +1,7 @@
+from lib.config import DANTE_STEAM_ID
 from . import Event
+
+from notifier.steam import get_steam_user
 
 class Death(Event):
     viking: str
@@ -20,6 +23,18 @@ class Join(Event):
 
     def __str__(self) -> str:
         return f'Trifle not with me, Queer Tarnished **{self.viking}**.' if self.isDante else  f'A pleasure to meet thee, Tarnished **{self.viking}**.'
+
+class JoinBySteam(Event):
+    steam_id: str
+
+    def __init__(self, steam_id: str) -> None:
+        self.steam_id = steam_id
+
+        self.steam_user = get_steam_user(self.steam_id)
+        self.steam_user.is_dante = self.steam_user.steam_id == DANTE_STEAM_ID
+
+    def __str__(self) -> str:
+        return f'Trifle not with me, Queer Tarnished **{self.steam_user.nick}**.' if self.steam_user.isDante else f'A pleasure to meet thee, Tarnished **{self.steam_user.nick}**.'
 
 class PlayerCount(Event):
     def __init__(self, playerCount: str) -> None:

@@ -44,7 +44,18 @@ class JoinTemplate(Template):
         # }]
         return payload
 
-
+class JoinBySteamTemplate(Template):
+    def get_payload(self) -> dict:
+        payload = super().get_payload()
+        payload['embeds'] = [{
+            'author': {
+                'name': self.event.steam_user.nick,
+                'icon_url': self.event.steam_user.avatar_url,
+            },
+            'title': f'I know thee, {self.event.steam_user.real_name}.',
+            'description': 'heh',
+        }]
+        return payload
 
 class DeathTemplate(Template):
     def get_payload(self) -> dict:
@@ -75,6 +86,7 @@ MAP = {
     types.ServerOn: ServerOnTemplate,
     types.ServerOff: ServerOffTemplate,
     types.Join: JoinTemplate,
+    types.JoinBySteam: JoinBySteamTemplate,
     types.Death: DeathTemplate,
     types.WorldSave: WorldSaveTemplate,
     types.NewConnection: NewConnectionTemplate,

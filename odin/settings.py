@@ -6,9 +6,13 @@ LOG_EVENT_TYPE_REGEXES = {
         "regex": "Got character ZDOID from (?P<viking>\w+[ \w+]*) : 0:0",
         'class': types.Death,
     },
-    "player_joined": {
-        "regex": "Got character ZDOID from (?P<viking>\w+[ \w+]*) : [-0-9]*:[-0-9]*$",
-        'class': types.Join,
+    # "player_joined": {
+    #     "regex": "Got character ZDOID from (?P<viking>\w+[ \w+]*) : [-0-9]*:[-0-9]*$",
+    #     'class': types.Join,
+    # },
+    "player_joined_by_steam": {
+        "regex": "Got handshake from client (?P<steam_id>\w+[ \w+]*)",
+        'class': types.JoinBySteam
     },
     "game_server_connected": {
         "regex": "Game server connected",

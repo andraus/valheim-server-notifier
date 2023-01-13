@@ -3,7 +3,7 @@ BOT_VERSION = 'RANNI_WITCH_v0.2'
 from typing import Optional
 
 from lib.utils import read_logs
-from lib.config import VALHEIM_LOG_PATH, DISCORD_WEBHOOK_URL
+from lib.config import VALHEIM_LOG_PATH, DISCORD_WEBHOOK_URL, STEAM_API_ID, STEAM_API_ID
 from event.matcher import resolve_event
 from notifier.mapper import build_template
 from notifier.discord import publish_event, publish_bot_init
@@ -24,6 +24,9 @@ if __name__ == '__main__':
 
     if DISCORD_WEBHOOK_URL is None:
         raise EnvironmentError('Missing <DISCORD_WEBHOOK_URL> envvar')
+
+    if STEAM_API_ID is None:
+        raise EnvironmentError('Missing <STEAM_API_ID> envvar')
 
     publish_bot_init(DISCORD_WEBHOOK_URL, BOT_VERSION)
 
