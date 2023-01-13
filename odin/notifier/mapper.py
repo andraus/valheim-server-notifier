@@ -47,14 +47,26 @@ class JoinTemplate(Template):
 class JoinBySteamTemplate(Template):
     def get_payload(self) -> dict:
         payload = super().get_payload()
+
+        title_msg = 'Foul trespasser!' if self.event.steam_user.is_dante else 'Oh, again we cross paths, Tarnished.'
+
         payload['embeds'] = [{
             'author': {
-                'name': self.event.steam_user.nick,
+                'name': self.event.steam_user.real_name,
                 'icon_url': self.event.steam_user.avatar
             },
-            'title': f'I know thee, {self.event.steam_user.real_name}.',
-            'description': 'heh',
+            'title': title_msg
         }]
+        return payload
+
+class WrongPasswordTemplate(Template):
+    def get_payload(self) -> dict:
+        payload = super().get_payload()
+        return payload
+
+class DisconnectTemplate(Template):
+    def get_payload(self) -> dict:
+        payload = super().get_payload()
         return payload
 
 class DeathTemplate(Template):
@@ -90,6 +102,8 @@ MAP = {
     types.Death: DeathTemplate,
     types.WorldSave: WorldSaveTemplate,
     types.NewConnection: NewConnectionTemplate,
+    types.WrongPassword: WrongPasswordTemplate,
+    types.Disconnect: DisconnectTemplate,
     types.PlayerCount: PlayerCountTemplate
 }
 

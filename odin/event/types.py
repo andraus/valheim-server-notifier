@@ -34,7 +34,31 @@ class JoinBySteam(Event):
         self.steam_user.is_dante = self.steam_user.steam_id == DANTE_STEAM_ID
 
     def __str__(self) -> str:
-        return f'Trifle not with me, Queer Tarnished **{self.steam_user.nick}**.' if self.steam_user.is_dante else f'A pleasure to meet thee, Tarnished **{self.steam_user.nick}**.'
+        return f'Trifle not with me, Queer **{self.steam_user.nick}**.' if self.steam_user.is_dante else f'A pleasure to meet thee, **{self.steam_user.nick}**.'
+
+class WrongPassword(Event):
+    steam_id: str
+
+    def __init__(self, steam_id: str) -> None:
+        self.steam_id = steam_id
+
+        self.steam_user = get_steam_user(self.steam_id)
+        self.steam_user.is_dante = self.steam_user.steam_id == DANTE_STEAM_ID
+
+    def __str__(self) -> str:
+        return f'Incorrect password, **{self.steam_user.nick}**.'
+
+class Disconnect(Event):
+    steam_id: str
+
+    def __init__(self, steam_id: str) -> None:
+        self.steam_id = steam_id
+
+        self.steam_user = get_steam_user(self.steam_id)
+        self.steam_user.is_dante = self.steam_user.steam_id == DANTE_STEAM_ID
+
+    def __str__(self) -> str:
+        return f'Disconnect **{self.steam_user.nick}**.'
 
 class PlayerCount(Event):
     def __init__(self, playerCount: str) -> None:

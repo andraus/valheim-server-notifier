@@ -14,6 +14,14 @@ LOG_EVENT_TYPE_REGEXES = {
         "regex": "Got handshake from client (?P<steam_id>\w+[ \w+]*)",
         'class': types.JoinBySteam
     },
+    "player_wrong_password": {
+        "regex": "Peer (?P<steam_id>\w+[ \w+]*) has wrong password",
+        'class': types.WrongPassword
+    },
+    "player_disconnect": {
+        "regex": "Closing socket (?P<steam_id>\w+[ \w+]*)",
+        'class': types.Disconnect
+    },
     "game_server_connected": {
         "regex": "Game server connected",
         'class': types.ServerOn,
