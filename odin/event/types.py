@@ -8,10 +8,10 @@ class Death(Event):
 
     def __init__(self, viking: str) -> None:
         self.viking = viking
-        self.isDante = viking == 'Dantez'
+        self.is_dante = viking == 'Dantez'
 
     def __str__(self) -> str:
-        return f'Quite the sleuth, aren\'t we, Queer Tarnished **{self.viking}**? Be gone. Hapless scum.' if self.isDante else f'Death beckons, **{self.viking}**. Still, I have high hopes for thee.'
+        return f'Quite the sleuth, aren\'t we, Queer Tarnished **{self.viking}**? Be gone. Hapless scum.' if self.is_dante else f'Death beckons, **{self.viking}**. Still, I have high hopes for thee.'
 
 
 class Join(Event):
@@ -19,10 +19,10 @@ class Join(Event):
 
     def __init__(self, viking: str) -> None:
         self.viking = viking
-        self.isDante = viking == 'Dantez'
+        self.is_dante = viking == 'Dantez'
 
     def __str__(self) -> str:
-        return f'Trifle not with me, Queer Tarnished **{self.viking}**.' if self.isDante else  f'A pleasure to meet thee, Tarnished **{self.viking}**.'
+        return f'Trifle not with me, Queer Tarnished **{self.viking}**.' if self.is_dante else  f'A pleasure to meet thee, Tarnished **{self.viking}**.'
 
 class JoinBySteam(Event):
     steam_id: str
@@ -34,7 +34,7 @@ class JoinBySteam(Event):
         self.steam_user.is_dante = self.steam_user.steam_id == DANTE_STEAM_ID
 
     def __str__(self) -> str:
-        return f'Trifle not with me, Queer Tarnished **{self.steam_user.nick}**.' if self.steam_user.isDante else f'A pleasure to meet thee, Tarnished **{self.steam_user.nick}**.'
+        return f'Trifle not with me, Queer Tarnished **{self.steam_user.nick}**.' if self.steam_user.is_dante else f'A pleasure to meet thee, Tarnished **{self.steam_user.nick}**.'
 
 class PlayerCount(Event):
     def __init__(self, playerCount: str) -> None:

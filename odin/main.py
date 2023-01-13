@@ -1,4 +1,4 @@
-BOT_VERSION = 'RANNI_WITCH_v0.2'
+BOT_VERSION = 'RANNI_WITCH_v0.3'
 
 from typing import Optional
 
