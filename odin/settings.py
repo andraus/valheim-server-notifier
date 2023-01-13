@@ -34,12 +34,12 @@ LOG_EVENT_TYPE_REGEXES = {
     #     "regex": "World saved \( (\d+\.\d+ms) \)",
     #     'class': types.WorldSave,
     # },
-    "new_connection": {
-        "regex": "New connection",
-        'class': types.NewConnection,
-    },
-    "player_count": {
-        "regex": "Connections (?P<playerCount>[-0-9]*) ZDOS",
-        'class': types.PlayerCount,
-    }
+    # "new_connection": {
+    #     "regex": "New connection",
+    #     'class': types.NewConnection,
+    # },
+    # "player_count": {
+    #     "regex": "Connections (?P<playerCount>[-0-9]*) ZDOS",
+    #     'class': types.PlayerCount,
+    # }
 }

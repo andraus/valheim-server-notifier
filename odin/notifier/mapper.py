@@ -48,20 +48,30 @@ class JoinBySteamTemplate(Template):
     def get_payload(self) -> dict:
         payload = super().get_payload()
 
-        title_msg = 'Foul trespasser!' if self.event.steam_user.is_dante else 'Oh, again we cross paths, Tarnished.'
+        title_msg = 'Queer Tarnished.' if self.event.steam_user.is_dante else 'Oh, again we cross paths, Tarnished.'
 
         payload['embeds'] = [{
             'author': {
                 'name': self.event.steam_user.real_name,
                 'icon_url': self.event.steam_user.avatar
             },
-            'title': title_msg
+            'title': title_msg,
+            'description': 'And good hunting to thee.'
         }]
         return payload
 
 class WrongPasswordTemplate(Template):
     def get_payload(self) -> dict:
         payload = super().get_payload()
+
+        payload['embeds'] = [{
+            'author': {
+                'name': self.event.steam_user.real_name,
+                'icon_url': self.event.steam_user.avatar
+            },
+            'title': 'Be gone. Hapless scum.',
+        }]
+
         return payload
 
 class DisconnectTemplate(Template):
